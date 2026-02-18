@@ -1,6 +1,6 @@
 # Framework de Performance Testing con K6 — E-Commerce
 
-Un framework profesional de **testing de rendimiento con K6** diseñado para evaluar la capacidad de respuesta y escalabilidad de la API de una plataforma e-commerce. Construido para el Challenge de Performance QA contra `perfappdemo.vercel.app`.
+Un framework profesional de **testing de rendimiento con K6** diseñado para evaluar la capacidad de respuesta y escalabilidad de la API de una plataforma e-commerce.
 
 ---
 
