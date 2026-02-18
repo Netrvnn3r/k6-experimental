@@ -14,7 +14,7 @@
     "test:products": "k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/scenarios/product-browse.js",
     "test:checkout": "k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/scenarios/checkout-flow.js",
     "test:users": "k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/scenarios/user-management.js",
-    "test:all-scenarios": "k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/scenarios/auth-flow.js && k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/scenarios/product-browse.js && k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/scenarios/checkout-flow.js && k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/scenarios/user-management.js"
+    "test:all": "k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/scenarios/auth-flow.js && k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/scenarios/product-browse.js && k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/scenarios/checkout-flow.js && k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/scenarios/user-management.js"
   },
   "keywords": [
     "k6",
