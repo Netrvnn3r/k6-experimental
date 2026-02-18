@@ -1,7 +1,8 @@
 {
   "name": "k6-ecommerce-performance-framework",
-  "version": "1.0.0",
-  "description": "K6 Performance Testing Framework for E-commerce Platform Challenge",
+  "version": "2.0.0",
+  "type": "module",
+  "description": "K6 Performance Testing Framework con BDD Cucumber/Gherkin — Scenario Outlines para tests de rendimiento",
   "author": "ghauyon",
   "license": "MIT",
   "scripts": {
@@ -14,13 +15,29 @@
     "test:products": "k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/scenarios/product-browse.js",
     "test:checkout": "k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/scenarios/checkout-flow.js",
     "test:users": "k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/scenarios/user-management.js",
-    "test:all-scenarios": "k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/scenarios/auth-flow.js && k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/scenarios/product-browse.js && k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/scenarios/checkout-flow.js && k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/scenarios/user-management.js"
+    "test:all-scenarios": "k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/scenarios/auth-flow.js && k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/scenarios/product-browse.js && k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/scenarios/checkout-flow.js && k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/scenarios/user-management.js",
+    "bdd:smoke": "node bdd/runner.js features/smoke-test.feature",
+    "bdd:auth": "node bdd/runner.js features/auth-flow.feature",
+    "bdd:products": "node bdd/runner.js features/product-browse.feature",
+    "bdd:checkout": "node bdd/runner.js features/checkout-flow.feature",
+    "bdd:run": "node bdd/runner.js features/",
+    "bdd:generate": "node bdd/runner.js features/ --generate-only",
+    "bdd:parse": "node bdd/runner.js features/ --parse-only",
+    "bdd:steps": "node bdd/runner.js --list-steps"
   },
   "keywords": [
     "k6",
     "performance-testing",
     "load-testing",
     "ecommerce",
-    "api-testing"
-  ]
+    "api-testing",
+    "bdd",
+    "cucumber",
+    "gherkin",
+    "scenario-outline"
+  ],
+  "dependencies": {
+    "@cucumber/gherkin": "^29.0.0",
+    "@cucumber/messages": "^26.0.0"
+  }
 }
