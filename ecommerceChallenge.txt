@@ -1,0 +1,65 @@
+E-commerce Performance Challenge
+Purpose
+Minimal commerce-style API + UI. Authenticate, interact, measure. You define any load strategy; this page only states the rules and surface.
+
+Login above to obtain a JWT. Without a token only this page is visible.
+
+Challenge Scenario
+A commerce platform has reported degraded responsiveness during high‑traffic sale events (e.g. seasonal “Cyber” campaigns). You are asked to design, execute and evaluate a performance test to uncover bottlenecks and propose concrete improvement actions. Use only the exposed public endpoints and the rules defined on this page.
+
+Tasks
+Test Plan Design: Define clear objectives (e.g. acceptable response times, target concurrency, degradation thresholds). Select critical endpoints (authentication, product access, order creation) and outline usage patterns (concurrent users, ramp profile, steady duration).
+Script Implementation: Implement test scripts in any standard tool (k6, JMeter, Gatling, Locust, etc.). Parameterize input data (search terms, pagination, SKUs) and externalize configuration where practical.
+Execution & Metrics Collection: Run the plan capturing latency distributions, throughput, error rates, and any resource observations you deem relevant (system / database). Preserve raw or exported results artifacts.
+Analysis & Bottlenecks: Interpret collected data to identify probable limiting factors (e.g. CPU segment in checkout, I/O, data access patterns) and describe supporting evidence (numbers, trends, comparative before/after if iterations are performed).
+Improvement Proposals: Provide actionable recommendations (indexing, query adjustments, caching, concurrency controls, architectural changes) with anticipated impact and trade‑offs.
+Report Assembly: Produce a concise document summarizing methodology, assumptions, test configuration, key metrics, findings, proposed actions, and (if applied) observed impact after changes.
+Do not include out‑of‑scope features; focus only on what is exposed here.
+
+Stack & Objects
+Next.js 15 + TypeScript backend (App Router).
+MongoDB persistence.
+Checkout includes a small deterministic CPU busy loop (~milliseconds).
+Products & Users are global; Orders are candidate-scoped.
+Authentication
+POST /api/auth with {"username":"YOUR_USER","password":"YOUR_PASSWORD"}
+Extract data.token
+Send header Authorization: Bearer <token> on every API call
+Token lifetime ~8h. Re-login as needed. Cookie is UI-only convenience.
+
+curl examples
+Endpoints
+AUTH
+POST /api/auth          # login
+DELETE /api/auth        # logout (optional)
+
+PRODUCTS (global)
+GET  /api/products?search=&page=&pageSize=&category=
+POST /api/products
+PATCH /api/products?id=<id>
+
+USERS (global)
+GET  /api/users?search=&page=&pageSize=
+POST /api/users
+
+ORDERS (per candidate)
+POST /api/orders
+GET  /api/orders?page=&pageSize=&status=
+Pagination: 1-based page, pageSize (max 100). Always send Authorization header.
+
+Response Envelope
+# Success
+{ "success": true, "data": { ... } }
+
+# Error
+{ "success": false, "error": "reason" }
+
+# Paginated list
+{ "success": true, "data": { "items": [...], "total": 1234, "page": 1, "pageSize": 20 } }
+Data & Constraints
+Checkout decrements stock atomically; insufficient stock yields 409.
+Classic skip/limit pagination; high page numbers may add cost.
+FAQ
+Token lifetime? ~8h.
+Assumptions
+If something is unspecified, document a reasonable assumption and proceed. Avoid relying on undocumented behavior.

@@ -1,0 +1,26 @@
+{
+  "name": "k6-ecommerce-performance-framework",
+  "version": "1.0.0",
+  "description": "K6 Performance Testing Framework for E-commerce Platform Challenge",
+  "author": "ghauyon",
+  "license": "MIT",
+  "scripts": {
+    "test:smoke": "k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/smoke-test.js",
+    "test:load": "k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/load-test.js",
+    "test:stress": "k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/stress-test.js",
+    "test:spike": "k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/spike-test.js",
+    "test:soak": "k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/soak-test.js",
+    "test:auth": "k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/scenarios/auth-flow.js",
+    "test:products": "k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/scenarios/product-browse.js",
+    "test:checkout": "k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/scenarios/checkout-flow.js",
+    "test:users": "k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/scenarios/user-management.js",
+    "test:all-scenarios": "k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/scenarios/auth-flow.js && k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/scenarios/product-browse.js && k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/scenarios/checkout-flow.js && k6 run -e BASE_URL=https://perfappdemo.vercel.app -e USERNAME=ghauyon -e PASSWORD=user4Test tests/scenarios/user-management.js"
+  },
+  "keywords": [
+    "k6",
+    "performance-testing",
+    "load-testing",
+    "ecommerce",
+    "api-testing"
+  ]
+}
